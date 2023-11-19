@@ -27,24 +27,26 @@ class AllPokemonsScreen extends StatelessWidget {
             var cubit = PokemonCubit.get(context);
 
             if (state is LoadingDataState) {
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(
-                  color: Colors.cyanAccent,
+                  color: AppColors.containerBackground.withOpacity(0.6),
                 ),
               );
             }
 
             return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-              ),
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) =>
-                  PokeItem(cubit.pokemons[index]),
-              itemCount: cubit.pokemons.length,
-            );
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(10),
+                itemBuilder: (BuildContext context, int index) => PokeItem(
+                      pokemonObject: cubit.pokemons[index],
+                    ),
+                itemCount: 10 //cubit.pokemons.length,
+                );
           },
         ),
       ),

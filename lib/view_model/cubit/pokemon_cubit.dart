@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:pokemon/model/pokemon_model.dart';
 import 'package:pokemon/view_model/network/remote/dio_helper.dart';
 import 'package:pokemon/view_model/network/remote/endpoints.dart';
 
@@ -12,17 +13,18 @@ class PokemonCubit extends Cubit<PokemonState> {
 
   static PokemonCubit get(context) => BlocProvider.of<PokemonCubit>(context);
 
-  List<dynamic> pokemons = [];
+  List<Pokemon> pokemons = [];
 
   Future<void> getPokeData() async {
     emit(LoadingDataState());
-    await Future.delayed(const Duration(seconds: 10));
     DioHelper.get(
       endpoint: EndPoints.endPoint,
     ).then(
       (value) {
-        Map<String, dynamic> jsonData = jsonDecode(value.data);
-        pokemons = jsonData["pokemon"];
+        List<dynamic> jsonData = jsonDecode(value.data)["pokemon"];
+        pokemons = jsonData
+            .map((pokemonData) => Pokemon.fromJson(pokemonData))
+            .toList();
         emit(DataSuccessState());
       },
     ).catchError((onError) {

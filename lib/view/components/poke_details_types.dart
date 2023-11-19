@@ -10,10 +10,11 @@ class TypesOfOnePoke extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(7),
       decoration: BoxDecoration(
-          color: AppColors.typesColorBackground,
-          borderRadius: BorderRadius.circular(30)),
+        color: AppColors.typesColorBackground,
+        borderRadius: BorderRadius.circular(30),
+      ),
       child: TextCustom(
         data: data,
         fontSize: 15,

@@ -13,7 +13,7 @@ class WeaknessesOfOnePoke extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(7),
       decoration: BoxDecoration(
           color: AppColors.weaknessColorBackground,
           borderRadius: BorderRadius.circular(30)),

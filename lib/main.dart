@@ -22,13 +22,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            backgroundColor: AppColors.cyan.withOpacity(0.6),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.blueGrey,
             elevation: 0,
             centerTitle: true,
-            toolbarHeight: 65,
+            toolbarHeight: 60,
           ),
-          scaffoldBackgroundColor: AppColors.scaffoldBackground,
+          scaffoldBackgroundColor: Colors.blueGrey,
           fontFamily: "NotoSans",
           iconTheme: const IconThemeData(
             size: 30,
